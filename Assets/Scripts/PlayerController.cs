@@ -16,6 +16,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Gravity value.")]
     private float gravity = -9.81f;
 
+    [Header("Dash Settings")]
+    [SerializeField, Tooltip("Dash speed.")]
+    private float dashSpeed = 20f;
+
+    [SerializeField, Tooltip("Dash duration.")]
+    private float dashDuration = 0.2f;
+
+    [SerializeField, Tooltip("Dash cooldown.")]
+    private float dashCooldown = 1f;
+
     [Header("Camera")]
     [SerializeField, Tooltip("Reference to the Cinemachine FreeLook Camera.")]
     private CinemachineCamera freeLookCamera;
@@ -26,6 +36,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputMove;
     private Vector3 velocity;
     private bool isGrounded;
+    private bool isDashing;
+    private float dashTime;
+    private float dashCooldownTime;
 
     private void Awake()
     {
@@ -76,11 +89,29 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(forward);
         }
 
-        characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
+        if (isDashing)
+        {
+            characterController.Move(dashSpeed * Time.deltaTime * moveDirection);
+            dashTime -= Time.deltaTime;
+            if (dashTime <= 0)
+            {
+                isDashing = false;
+                dashCooldownTime = dashCooldown;
+            }
+        }
+        else
+        {
+            characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
 
-        // Apply gravity
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
+            // Apply gravity
+            velocity.y += gravity * Time.deltaTime;
+            characterController.Move(velocity * Time.deltaTime);
+
+            if (dashCooldownTime > 0)
+            {
+                dashCooldownTime -= Time.deltaTime;
+            }
+        }
     }
 
     public void OnMove(InputValue inputValue)
@@ -93,6 +124,15 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    public void OnSprint(InputValue inputValue)
+    {
+        if (dashCooldownTime <= 0)
+        {
+            isDashing = true;
+            dashTime = dashDuration;
         }
     }
 }
