@@ -9,9 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Player movement speed.")]
     private float moveSpeed = 5f;
 
-    [SerializeField, Tooltip("Player rotation speed.")]
-    private float rotationSpeed = 10f;
-
     [Header("Camera")]
     [SerializeField, Tooltip("Reference to the Cinemachine FreeLook Camera.")]
     private CinemachineCamera freeLookCamera;
