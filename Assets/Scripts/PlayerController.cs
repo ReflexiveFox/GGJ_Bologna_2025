@@ -9,12 +9,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Player movement speed.")]
     private float moveSpeed = 5f;
 
+    [SerializeField, Tooltip("Player jump height.")]
+    private float jumpHeight = 2f;
+
+    [SerializeField, Tooltip("Gravity value.")]
+    private float gravity = -9.81f;
+
     [Header("Camera")]
     [SerializeField, Tooltip("Reference to the Cinemachine FreeLook Camera.")]
     private CinemachineCamera freeLookCamera;
+    private Camera cam;
 
     private CharacterController characterController;
     private Vector2 inputMove;
+    private Vector3 velocity;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -24,6 +33,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("No Cinemachine FreeLook Camera assigned.");
         }
+        cam = Camera.main;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -33,9 +44,16 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        isGrounded = characterController.isGrounded;
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // Small value to ensure the player stays grounded
+        }
+
         // Convert input into a world space direction
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+        Vector3 forward = cam.transform.forward;
+        Vector3 right = cam.transform.right;
 
         // Ignore vertical camera tilt
         forward.y = 0f;
@@ -48,16 +66,26 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.LookRotation(forward);
         }
 
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
+
+        // Apply gravity
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime);
     }
 
     public void OnMove(InputValue inputValue)
     {
-        Debug.Log("Move input detected.");
         inputMove = inputValue.Get<Vector2>();
+    }
+
+    public void OnJump(InputValue inputValue)
+    {
+        if (isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
     }
 }
