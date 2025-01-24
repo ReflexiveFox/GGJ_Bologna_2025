@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
 
     private CharacterController characterController;
+    private Rigidbody playerRb;
     private Vector2 inputMove;
     private Vector3 velocity;
     private bool isGrounded;
@@ -28,13 +30,14 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-
+        playerRb = GetComponent<Rigidbody>();
         if (freeLookCamera == null)
         {
             Debug.LogWarning("No Cinemachine FreeLook Camera assigned.");
         }
         cam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
+        playerRb.maxAngularVelocity = 0;
     }
 
     private void Update()
@@ -65,6 +68,10 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = (forward * inputMove.y + right * inputMove.x).normalized;
 
         if (moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveDirection);
+        }
+        else
         {
             transform.rotation = Quaternion.LookRotation(forward);
         }
