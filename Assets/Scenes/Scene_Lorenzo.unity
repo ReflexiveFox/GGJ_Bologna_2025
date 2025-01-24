@@ -598,6 +598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  jumpHeight: 5
+  gravity: -9.81
   freeLookCamera: {fileID: 2137013521}
 --- !u!114 &1108973502
 MonoBehaviour:
