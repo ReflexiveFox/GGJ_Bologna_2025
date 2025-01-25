@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Rigidbody myRigidbody;
+    private Rigidbody myRigidbody;
 
     [SerializeField] private Vector3 force = new Vector3(5, 0, 0);
 
@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody = GetComponentInChildren<Rigidbody>();
     }
 
     private void OnEnable()
