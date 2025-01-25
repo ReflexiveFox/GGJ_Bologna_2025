@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
 
     private int amountToPool = 8;
 
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private List<GameObject> bulletPrefabs;
 
     private void Awake()
     {
@@ -28,12 +28,6 @@ public class ObjectPool : MonoBehaviour
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public GameObject GetPooledObject()
