@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Cannone : MonoBehaviour
 {
-    private float delay = 1.5f;
+    [SerializeField] private float delay = 1.5f;
 
     private float delta = 0;
 
     [SerializeField] private Bullet bulletTemplate;
 
+    [SerializeField] private Transform bulletPosition;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,8 +31,15 @@ public class Cannone : MonoBehaviour
         
         if (delta > delay)
         {
-            Bullet bullet = Instantiate(bulletTemplate, transform.position, transform.rotation);
-            bullet.gameObject.SetActive(true);
+            GameObject bullet = ObjectPool.instance.GetPooledObject();
+
+            if (bullet != null )
+            {
+                bullet.transform.position = bulletPosition.position;
+                bullet.transform.rotation = Quaternion.identity;
+                bullet.SetActive(true);
+            }
+            
             delta = 0;
         }
     }

@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &309171459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309171460}
+  m_Layer: 0
+  m_Name: CannonChild
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309171460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309171459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 510191367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510191363
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1314623828}
+  - {fileID: 309171460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.015, y: 1.276, z: -89.312}
 --- !u!114 &510191368
@@ -243,7 +274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb4816b2eee8c7439a8df14ce947472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 3
   bulletTemplate: {fileID: 1314623832}
+  bulletPosition: {fileID: 309171460}
 --- !u!1 &790260707
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +506,51 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1231919283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231919285}
+  - component: {fileID: 1231919284}
+  m_Layer: 0
+  m_Name: Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1231919284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231919283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c53aadcb160b344838261ef5dfc1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1314623827}
+--- !u!4 &1231919285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231919283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.4699316, y: -1.2071915, z: -3.7210245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300724927
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1314623828
 Transform:
   m_ObjectHideFlags: 0
@@ -639,12 +717,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314623827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011136189, y: -4.656613e-10, z: 0.000000029802322, w: 0.999938}
-  m_LocalPosition: {x: -0.05906912, y: 0.91299963, z: -0.08968879}
-  m_LocalScale: {x: 0.15133375, y: 0.08824605, z: 0.29608828}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70284903, w: 0.71133906}
+  m_LocalPosition: {x: -10.028, y: 0.829, z: -0.83}
+  m_LocalScale: {x: 0.15133375, y: 0.088246055, z: 0.2960883}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 510191367}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1314623829
 BoxCollider:
@@ -733,7 +811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 1314623833}
-  speed: 5
+  force: {x: 5, y: 0, z: 0}
+  delay: 0.5
 --- !u!54 &1314623833
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -774,7 +853,7 @@ GameObject:
   - component: {fileID: 1962286097}
   - component: {fileID: 1962286096}
   - component: {fileID: 1962286095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,3 +987,5 @@ SceneRoots:
   - {fileID: 790260711}
   - {fileID: 510191367}
   - {fileID: 1962286099}
+  - {fileID: 1314623828}
+  - {fileID: 1231919285}

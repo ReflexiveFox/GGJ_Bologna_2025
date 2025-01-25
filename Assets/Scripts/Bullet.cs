@@ -1,21 +1,28 @@
 using UnityEngine;
-using static UnityEngine.Random;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody myRigidbody;
 
-    [SerializeField] private float speed = 5;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Vector3 force = new Vector3(5, 0, 0);
+
+    [SerializeField] private float delay = 3;
+
+    private void Awake()
     {
-        myRigidbody.AddForce(Vector3.right * speed, ForceMode.Impulse);
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        myRigidbody.angularVelocity = Vector3.zero;
+        myRigidbody.linearVelocity = Vector3.zero;
+        myRigidbody.AddForce(force, ForceMode.Impulse);
+        Invoke(nameof(WithdrawGameObject), delay);
+    }
+
+    private void WithdrawGameObject ()
+    {
+        gameObject.SetActive(false);
     }
 }
