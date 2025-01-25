@@ -8221,6 +8221,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 892103513919663433, guid: 6eccf9c9f60f3de47953e3bbb172af18, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892103513919663433, guid: 6eccf9c9f60f3de47953e3bbb172af18, type: 3}
       propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
