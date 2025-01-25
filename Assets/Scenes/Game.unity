@@ -1957,6 +1957,10 @@ PrefabInstance:
       value: Tubo
       objectReference: {fileID: 0}
     - target: {fileID: 2036473015188172618, guid: 388d068f57bdbd24eaa6d51485391f63, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036473015188172618, guid: 388d068f57bdbd24eaa6d51485391f63, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f5aab5a7a5aa1145997d0e48dc10332, type: 2}
