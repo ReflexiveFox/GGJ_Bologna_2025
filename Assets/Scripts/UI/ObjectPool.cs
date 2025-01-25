@@ -24,7 +24,7 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = Instantiate(bulletPrefab);
+            GameObject obj = Instantiate(bulletPrefabs[0]);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
