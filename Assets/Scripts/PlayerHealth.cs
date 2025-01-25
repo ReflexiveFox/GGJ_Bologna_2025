@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static event Action<int> OnHealthChanged;
+    public static event Action<int, int> OnHealthChanged;
     public static event Action OnPlayerDied;
 
     [Header("Player Health Settings")]
@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (_currentHealth != value)
             {
-                OnHealthChanged?.Invoke(value);
+                OnHealthChanged?.Invoke(value, maxHealth);
             }
             _currentHealth = Mathf.Clamp(value, 0, maxHealth);
             if(_currentHealth <= 0)
@@ -38,9 +38,9 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collision is with a bullet
-        if (collision.gameObject.TryGetComponent(out Bullet bullet))
+        if (collision.gameObject.TryGetComponent(out Enemy bullet))
         {
-            //TakeDamage(bullet.damage);
+            TakeDamage(bullet.damage);
         }
     }
 
@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player died.");
         // Implement player death logic here (e.g., respawn, game over screen, etc.)
+        gameObject.SetActive(false);
         OnPlayerDied?.Invoke();
     }
 }

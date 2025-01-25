@@ -8,6 +8,21 @@ public class PauseHandler : MonoBehaviour
 
     private bool isPaused = false;
 
+    private void Awake()
+    {
+        PlayerHealth.OnPlayerDied += StopGame;
+    }
+
+    private void Start()
+    {
+        ResumeGame();
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDied -= StopGame;
+    }
+
     private void OnPauseGame(InputValue inputValue)
     {
         if (isPaused)
@@ -19,13 +34,16 @@ public class PauseHandler : MonoBehaviour
             PauseGame();
         }
     }
-
-    public void PauseGame()
+    public void StopGame()
     {
         isPaused = true;
         SetCursor(isPaused);
-        OnPause?.Invoke();
         Time.timeScale = 0f;
+    }
+    public void PauseGame()
+    {
+        StopGame();
+        OnPause?.Invoke();
     }
 
     public void ResumeGame()
