@@ -3,11 +3,15 @@ using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    public static event Action<float> OnDashCooldownChanged;
+    public static event Action<float> OnDashTimeChanged;
+
     [Header("Player Settings")]
     [SerializeField, Tooltip("Player movement speed.")]
     private float moveSpeed = 5f;
@@ -27,8 +31,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Dash cooldown.")]
     private float dashCooldown = 1f;
-    [Space]
-    [SerializeField] private Slider dashSlider;
 
     [Header("Camera")]
     [SerializeField, Tooltip("Reference to the Cinemachine FreeLook Camera.")]
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
         set
         {
             _dashCooldownTime = value;
-            dashSlider.value = 1 - (DashCooldownTime / dashCooldown);
+            OnDashCooldownChanged?.Invoke(1 - (DashCooldownTime / dashCooldown));
         }
     }
 
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
         set
         {
             _dashTime = value;
-            dashSlider.value = DashTime / dashDuration;
+            OnDashTimeChanged?.Invoke(DashTime / dashDuration);
         }
     }
 
