@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collision is with a bullet
-        if (collision.gameObject.TryGetComponent(out Enemy bullet))
+        if (collision.gameObject.TryGetComponent(out Bullet bullet))
         {
             TakeDamage(bullet.damage);
         }

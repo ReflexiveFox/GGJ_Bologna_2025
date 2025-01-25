@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Vector3 force = new Vector3(5, 0, 0);
 
     [SerializeField] private float delay = 3;
+    public int damage = 10;
 
     private void Awake()
     {
