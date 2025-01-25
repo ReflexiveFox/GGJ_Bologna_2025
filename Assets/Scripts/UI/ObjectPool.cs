@@ -1,7 +1,6 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Random;
+using Random = UnityEngine.Random;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -24,19 +23,25 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = Instantiate(bulletPrefab);
-            obj.SetActive(false);
-            pooledObjects.Add(obj);
+            CreateAndAddRandomBulletObject();
         }
+    }
+
+    private GameObject CreateAndAddRandomBulletObject()
+    {
+        GameObject obj = Instantiate(bulletPrefabs[Random.Range(0, bulletPrefabs.Count - 1)]);
+        obj.SetActive(false);
+        pooledObjects.Add(obj);
+        return obj;
     }
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0;i < pooledObjects.Count; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
                 return pooledObjects[i];
         }
-        return null;
+        return CreateAndAddRandomBulletObject();
     }
 }
