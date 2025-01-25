@@ -8957,7 +8957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 3469287837456006906}
-  speed: 50
+  force: {x: 5, y: 0, z: 0}
+  delay: 3
+  damage: 10
 --- !u!64 &3469287837456006908
 MeshCollider:
   m_ObjectHideFlags: 0
