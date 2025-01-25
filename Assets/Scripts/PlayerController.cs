@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Rigidbody))]
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Dash cooldown.")]
     private float dashCooldown = 1f;
+    [Space]
+    [SerializeField] private Slider dashSlider;
 
     [Header("Camera")]
     [SerializeField, Tooltip("Reference to the Cinemachine FreeLook Camera.")]
@@ -37,8 +41,28 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private bool isDashing;
-    private float dashTime;
-    private float dashCooldownTime;
+    private float _dashTime;
+    private float _dashCooldownTime;
+
+    private float DashCooldownTime 
+    {
+        get => _dashCooldownTime;
+        set
+        {
+            _dashCooldownTime = value;
+            dashSlider.value = 1 - (DashCooldownTime / dashCooldown);
+        }
+    }
+
+    private float DashTime
+    { 
+        get => _dashTime;
+        set
+        {
+            _dashTime = value;
+            dashSlider.value = DashTime / dashDuration;
+        }
+    }
 
     private void Awake()
     {
@@ -92,11 +116,11 @@ public class PlayerController : MonoBehaviour
         if (isDashing)
         {
             characterController.Move(dashSpeed * Time.deltaTime * moveDirection);
-            dashTime -= Time.deltaTime;
-            if (dashTime <= 0)
+            DashTime -= Time.deltaTime;
+            if (DashTime <= 0)
             {
                 isDashing = false;
-                dashCooldownTime = dashCooldown;
+                DashCooldownTime = dashCooldown;
             }
         }
         else
@@ -107,9 +131,9 @@ public class PlayerController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);
 
-            if (dashCooldownTime > 0)
+            if (DashCooldownTime > 0)
             {
-                dashCooldownTime -= Time.deltaTime;
+                DashCooldownTime -= Time.deltaTime;
             }
         }
     }
@@ -129,10 +153,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnSprint(InputValue inputValue)
     {
-        if (dashCooldownTime <= 0)
+        if (DashCooldownTime <= 0)
         {
             isDashing = true;
-            dashTime = dashDuration;
+            DashTime = dashDuration;
         }
     }
 }
