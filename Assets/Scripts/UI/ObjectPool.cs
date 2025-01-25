@@ -31,12 +31,16 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        GameObject gameObjectToSpawn = null;
-        do
+        for(int i = 0; i < pooledObjects.Count; i++)
         {
-            gameObjectToSpawn = pooledObjects[Random.Range(0, pooledObjects.Count-1)];
+            if(!pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
         }
-        while(gameObjectToSpawn.activeInHierarchy);
-        return gameObjectToSpawn;
+        GameObject obj = Instantiate(bulletPrefabs[Random.Range(0, bulletPrefabs.Count-1)].gameObjectToSpawn);
+        obj.SetActive(false);
+        pooledObjects.Add(obj);
+        return obj;
     }
 }

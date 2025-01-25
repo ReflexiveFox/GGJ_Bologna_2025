@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField, Tooltip("Current health of the player.")]
     private int _currentHealth;
 
+    [SerializeField] private SoundData hitSound;
+
     public int CurrentHealth 
     { 
         get => _currentHealth;
@@ -41,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Bullet bullet))
         {
             TakeDamage(bullet.damage);
+            SoundManager.Instance.CreateSound().WithSoundData(hitSound).WithRandomPitch().WithPosition(transform.position).Play();
         }
     }
 
