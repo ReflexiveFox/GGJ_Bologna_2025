@@ -5602,6 +5602,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: 'bulletPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4099808304437365407, guid: da0262ea65eccf14e9d750de86e3a5bc, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: 'bulletPrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 656556610009661082, guid: 1f5f1ba6dbac69d478ac398f1b54f643, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 5044546878105278919, guid: be260ff912602944fb12b297ff10c729, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 656556610009661082, guid: 1f5f1ba6dbac69d478ac398f1b54f643, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 1994325851271181139, guid: cda8ab87fd74c8e43b60d4d5587da2bf, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[3].gameObject
+      value: 
+      objectReference: {fileID: 1991450105025897981, guid: 1f1fe2e7b18315d42b8c775ef0af12e1, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[4].gameObject
+      value: 
+      objectReference: {fileID: 4099808304437365407, guid: da0262ea65eccf14e9d750de86e3a5bc, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[0].amountToPool
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[1].amountToPool
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[2].amountToPool
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[3].amountToPool
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[4].amountToPool
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[0].gameObjectToSpawn
+      value: 
+      objectReference: {fileID: 5044546878105278919, guid: be260ff912602944fb12b297ff10c729, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[1].gameObjectToSpawn
+      value: 
+      objectReference: {fileID: 656556610009661082, guid: 1f5f1ba6dbac69d478ac398f1b54f643, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[2].gameObjectToSpawn
+      value: 
+      objectReference: {fileID: 1994325851271181139, guid: cda8ab87fd74c8e43b60d4d5587da2bf, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[3].gameObjectToSpawn
+      value: 
+      objectReference: {fileID: 1991450105025897981, guid: 1f1fe2e7b18315d42b8c775ef0af12e1, type: 3}
+    - target: {fileID: 3352057455050578195, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
+      propertyPath: bulletPrefabs.Array.data[4].gameObjectToSpawn
+      value: 
+      objectReference: {fileID: 4099808304437365407, guid: da0262ea65eccf14e9d750de86e3a5bc, type: 3}
     - target: {fileID: 4293501099760762642, guid: 53c8266e8f6f25246b2e8abf04d7a328, type: 3}
       propertyPath: m_Name
       value: ObjectPooler

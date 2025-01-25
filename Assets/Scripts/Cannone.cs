@@ -27,7 +27,6 @@ public class Cannone : MonoBehaviour
         if (bullet != null )
         {
             bullet.transform.position = bulletPosition.position;
-            bullet.transform.rotation = Quaternion.identity;
             bullet.SetActive(true);
         }
             

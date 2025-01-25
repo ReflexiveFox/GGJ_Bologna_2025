@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -8,9 +7,7 @@ public class ObjectPool : MonoBehaviour
 
     private List<GameObject> pooledObjects = new List<GameObject>();
 
-    private int amountToPool = 8;
-
-    [SerializeField] private List<GameObject> bulletPrefabs;
+    [SerializeField] private List<ObjectPoolItem> bulletPrefabs;
 
     private void Awake()
     {
@@ -21,27 +18,25 @@ public class ObjectPool : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < amountToPool; i++)
+        for(int i = 0; i < bulletPrefabs.Count; i++)
         {
-            CreateAndAddRandomBulletObject();
+            for(int j = 0; j < bulletPrefabs[i].amountToPool; j++)
+            {
+                GameObject obj = Instantiate(bulletPrefabs[i].gameObjectToSpawn);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
         }
-    }
-
-    private GameObject CreateAndAddRandomBulletObject()
-    {
-        GameObject obj = Instantiate(bulletPrefabs[Random.Range(0, bulletPrefabs.Count - 1)]);
-        obj.SetActive(false);
-        pooledObjects.Add(obj);
-        return obj;
     }
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < pooledObjects.Count; i++)
+        GameObject gameObjectToSpawn = null;
+        do
         {
-            if (!pooledObjects[i].activeInHierarchy)
-                return pooledObjects[i];
+            gameObjectToSpawn = pooledObjects[Random.Range(0, pooledObjects.Count-1)];
         }
-        return CreateAndAddRandomBulletObject();
+        while(gameObjectToSpawn.activeInHierarchy);
+        return gameObjectToSpawn;
     }
 }
