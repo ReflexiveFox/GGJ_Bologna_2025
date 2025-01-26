@@ -32,7 +32,7 @@ public class RecordManager : MonoBehaviour
     {
         if(!(PlayerPrefs.HasKey(minutesRecord) && PlayerPrefs.HasKey(secondsRecord)))
         {
-            TrySaveTime(new TimeSpan(0, 0, 0));
+            ClearAllPrefs();
         }
     }
 
@@ -49,10 +49,15 @@ public class RecordManager : MonoBehaviour
 
     private void TrySaveTime(TimeSpan newTime)
     {
-        if(newTime <= GetTimeRecord())
+        if (newTime <= GetTimeRecord())
         {
             return;
         }
+        SetRecord(newTime);
+    }
+
+    private static void SetRecord(TimeSpan newTime)
+    {
         PlayerPrefs.SetInt(minutesRecord, newTime.Minutes);
         PlayerPrefs.SetInt(secondsRecord, newTime.Seconds);
         OnRecordUpdated?.Invoke();
@@ -71,6 +76,11 @@ public class RecordManager : MonoBehaviour
         return new TimeSpan(0, Mathf.FloorToInt(time / 60), Mathf.FloorToInt(time % 60));
     }
 
+    public void ClearAllPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        SetRecord(GetTimeSpan(0));
+    }
 
     public string GetTimeRecordString()
     {

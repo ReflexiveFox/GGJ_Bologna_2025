@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System.Xml.Serialization;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class RecordTimeText : MonoBehaviour
@@ -24,7 +23,12 @@ public class RecordTimeText : MonoBehaviour
         RecordManager.OnRecordUpdated -= SetRecordText;
     }
 
-    private void SetRecordText()
+    public void ResetRecord()
+    {
+        RecordManager.Instance.ClearAllPrefs();
+    }
+
+    public void SetRecordText()
     {
         recordTimeText.text = RecordManager.Instance.GetTimeRecordString();
     }
