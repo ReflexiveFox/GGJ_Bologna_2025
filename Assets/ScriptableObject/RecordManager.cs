@@ -8,7 +8,7 @@ public class RecordManager : MonoBehaviour
     public static RecordManager Instance {  get; private set; }
 
     private const string minutesRecord = "MinutesRecord";
-    private const string SecondsRecord = "SecondsRecord";
+    private const string secondsRecord = "secondsRecord";
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class RecordManager : MonoBehaviour
             return;
         }
         PlayerPrefs.SetInt(minutesRecord, newTime.Minutes);
-        PlayerPrefs.SetInt(SecondsRecord, newTime.Seconds);
+        PlayerPrefs.SetInt(secondsRecord, newTime.Seconds);
         OnRecordUpdated?.Invoke();
     }
 
@@ -61,7 +61,7 @@ public class RecordManager : MonoBehaviour
         return new(
             0,
             PlayerPrefs.GetInt(minutesRecord, 0),
-            PlayerPrefs.GetInt(SecondsRecord, 0)
+            PlayerPrefs.GetInt(secondsRecord, 0)
         );
     }
     private TimeSpan GetTimeSpan(float time)
