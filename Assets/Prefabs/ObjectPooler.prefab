@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabs:
   - gameObjectToSpawn: {fileID: 5044546878105278919, guid: be260ff912602944fb12b297ff10c729, type: 3}
-    amountToPool: 3
+    amountToPool: 10
   - gameObjectToSpawn: {fileID: 656556610009661082, guid: 1f5f1ba6dbac69d478ac398f1b54f643, type: 3}
-    amountToPool: 3
+    amountToPool: 10
   - gameObjectToSpawn: {fileID: 1994325851271181139, guid: cda8ab87fd74c8e43b60d4d5587da2bf, type: 3}
-    amountToPool: 3
+    amountToPool: 10
   - gameObjectToSpawn: {fileID: 1991450105025897981, guid: 1f1fe2e7b18315d42b8c775ef0af12e1, type: 3}
-    amountToPool: 3
+    amountToPool: 10
   - gameObjectToSpawn: {fileID: 4099808304437365407, guid: da0262ea65eccf14e9d750de86e3a5bc, type: 3}
-    amountToPool: 3
+    amountToPool: 10

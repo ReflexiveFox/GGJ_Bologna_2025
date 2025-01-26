@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4401aec5b04c9c4295e1ebf06e1a4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 0, z: 50}
-  delay: 3
+  force: 50
+  delay: 2
   damage: 10
 --- !u!54 &1683113796375242554
 Rigidbody:
