@@ -45,10 +45,12 @@ public class SoundManager : MonoBehaviour
     {
         if (scene.buildIndex == 0)
         {
-            CreateSound().WithSoundData(gameBackground);
+            CreateSound().WithSoundData(menuBackground);
         }
         else
         {
+            CreateSound().WithSoundData(gameBackground);
+
             InitializePool();
         }
     }
