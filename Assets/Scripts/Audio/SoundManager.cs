@@ -12,8 +12,6 @@ public class SoundManager : MonoBehaviour
     private readonly List<SoundEmitter> activeSoundEmitters = new();
 
     public readonly Queue<SoundEmitter> FrequentSoundEmitters = new();
-    [SerializeField] private SoundData menuBackground;
-    [SerializeField] private SoundData gameBackground;
     [SerializeField] private SoundEmitter soundEmitterPrefab;
     [SerializeField] private bool collectionCheck = true;
     [SerializeField] private int defaultCapacity = 10;
@@ -27,7 +25,6 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += ApplyBackgroundMusic;
         }
         else
         {
@@ -36,23 +33,9 @@ public class SoundManager : MonoBehaviour
         }   
     }
 
-    private void OnDestroy()
+    private void Start()
     {
-        SceneManager.sceneLoaded -= ApplyBackgroundMusic;
-    }
-
-    private void ApplyBackgroundMusic(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        if (scene.buildIndex == 0)
-        {
-            CreateSound().WithSoundData(menuBackground);
-        }
-        else
-        {
-            CreateSound().WithSoundData(gameBackground);
-
-            InitializePool();
-        }
+        InitializePool();
     }
 
     public SoundBuilder CreateSound() => new SoundBuilder(this);
