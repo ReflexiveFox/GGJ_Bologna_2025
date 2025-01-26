@@ -28,6 +28,14 @@ public class RecordManager : MonoBehaviour
         Timer.OnTimerStopped += TrySaveTime;
     }
 
+    private void Start()
+    {
+        if(!(PlayerPrefs.HasKey(minutesRecord) && PlayerPrefs.HasKey(secondsRecord)))
+        {
+            TrySaveTime(new TimeSpan(0, 0, 0));
+        }
+    }
+
     private void OnDisable()
     {
         Timer.OnTimerStopped -= TrySaveTime;
@@ -39,7 +47,7 @@ public class RecordManager : MonoBehaviour
         TrySaveTime(newTimeSpan);
     }
 
-    public void TrySaveTime(TimeSpan newTime)
+    private void TrySaveTime(TimeSpan newTime)
     {
         if(newTime <= GetTimeRecord())
         {
@@ -50,13 +58,7 @@ public class RecordManager : MonoBehaviour
         OnRecordUpdated?.Invoke();
     }
 
-    public string GetTimeRecordString()
-    {
-        TimeSpan time = GetTimeRecord();
-        return string.Format("{0:00} : {1:00}", time.Minutes, time.Seconds);
-    }
-
-    public TimeSpan GetTimeRecord()
+    private TimeSpan GetTimeRecord()
     {
         return new(
             0,
@@ -69,9 +71,11 @@ public class RecordManager : MonoBehaviour
         return new TimeSpan(0, Mathf.FloorToInt(time / 60), Mathf.FloorToInt(time % 60));
     }
 
-    public bool IsNewRecord(float newTime)
+
+    public string GetTimeRecordString()
     {
-        TimeSpan currentTimeScore = GetTimeSpan(newTime);
-        return currentTimeScore > GetTimeRecord();
+        TimeSpan time = GetTimeRecord();
+        Debug.Log($"{nameof(time.Minutes)}: {time.Minutes}, {nameof(time.Seconds)}: {time.Seconds}");
+        return string.Format("{0:00} : {1:00}", time.Minutes, time.Seconds);
     }
 }

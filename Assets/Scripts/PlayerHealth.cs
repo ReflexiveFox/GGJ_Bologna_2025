@@ -39,7 +39,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the collision is with a bullet
         if (collision.gameObject.TryGetComponent(out Bullet bullet))
         {
             TakeDamage(bullet.damage);           
@@ -58,8 +57,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died.");
-        // Implement player death logic here (e.g., respawn, game over screen, etc.)
         gameObject.SetActive(false);
         OnPlayerDied?.Invoke();
     }
