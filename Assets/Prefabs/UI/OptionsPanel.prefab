@@ -364,7 +364,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 33.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344495989709590441, guid: 7824e96e30244d24885ebb6099f7c8b2, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 40.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -777,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344495989709590441, guid: 7824e96e30244d24885ebb6099f7c8b2, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 59.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -911,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344495989709590441, guid: 7824e96e30244d24885ebb6099f7c8b2, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 64.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
