@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody myRigidbody;
 
-    [SerializeField] private Vector3 force = new Vector3(5, 0, 0);
+    [SerializeField] private float force = 50;
 
     [SerializeField] private float delay = 3;
     public int damage = 10;
@@ -14,13 +14,14 @@ public class Bullet : MonoBehaviour
         myRigidbody = GetComponentInChildren<Rigidbody>();
     }
 
-    private void OnEnable()
+    public void Shoot (Vector3 shootingDirection)
     {
         myRigidbody.angularVelocity = Vector3.zero;
         myRigidbody.linearVelocity = Vector3.zero;
-        myRigidbody.AddForce(force, ForceMode.Impulse);
+        myRigidbody.AddForce(shootingDirection * force, ForceMode.Impulse);
         Invoke(nameof(WithdrawGameObject), delay);
     }
+
 
     private void WithdrawGameObject ()
     {

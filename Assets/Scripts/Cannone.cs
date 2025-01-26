@@ -28,6 +28,7 @@ public class Cannone : MonoBehaviour
         {
             bullet.transform.position = bulletPosition.position;
             bullet.SetActive(true);
+            bullet.GetComponent<Bullet>().Shoot(transform.forward);
         }
             
         delta = 0;
