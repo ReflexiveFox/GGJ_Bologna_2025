@@ -44,6 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abceed1b4cb4ca54da45d5d8142ba82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuBackground:
+    clip: {fileID: 0}
+    mixerGroup: {fileID: -5352425741048275905, guid: 4f001f7e9814607459792d7a12186d60, type: 2}
+    loop: 1
+    playOnAwake: 1
+    frequentSound: 0
+  gameBackground:
+    clip: {fileID: 0}
+    mixerGroup: {fileID: -5352425741048275905, guid: 4f001f7e9814607459792d7a12186d60, type: 2}
+    loop: 1
+    playOnAwake: 1
+    frequentSound: 0
   soundEmitterPrefab: {fileID: 6321907593046755349, guid: 17c950501bfaaa4478d72e11d1d00d52, type: 3}
   collectionCheck: 1
   defaultCapacity: 10

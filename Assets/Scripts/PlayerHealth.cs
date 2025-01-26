@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth 
     { 
         get => _currentHealth;
-        set
+        private set
         {
             if (_currentHealth != value)
             {
@@ -42,15 +42,18 @@ public class PlayerHealth : MonoBehaviour
         // Check if the collision is with a bullet
         if (collision.gameObject.TryGetComponent(out Bullet bullet))
         {
-            TakeDamage(bullet.damage);
-            SoundManager.Instance.CreateSound().WithSoundData(hitSound).WithRandomPitch().WithPosition(transform.position).Play();
+            TakeDamage(bullet.damage);           
+        }
+        else if(collision.gameObject.TryGetComponent(out PlayerDead playerDead))
+        {
+            TakeDamage(maxHealth);
         }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
-        Debug.Log("Player took " + damage + " damage. Current health: " + CurrentHealth);
+        SoundManager.Instance.CreateSound().WithSoundData(hitSound).WithRandomPitch().WithPosition(transform.position).Play();
     }
 
     private void Die()

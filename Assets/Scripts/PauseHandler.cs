@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseHandler : MonoBehaviour
 {
@@ -34,6 +36,11 @@ public class PauseHandler : MonoBehaviour
             PauseGame();
         }
     }
+    public void RestoreTimeScale()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void StopGame()
     {
         isPaused = true;
